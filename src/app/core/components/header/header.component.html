@@ -1,0 +1,46 @@
+<header class="header">
+  <div class="header__container">
+    <p-image
+      src="assets/logos/NexsysLogo.png"
+      alt="header logo"
+      width="250"
+      styleClass="header__container__logo"
+      [routerLink]="['/products/list']"
+    >
+    </p-image>
+    <form [formGroup]="searchForm" class="header__container__search">
+      <span class="p-input-icon-left header__container__search__control">
+        <i class="pi pi-search"></i>
+        <input
+          type="text"
+          pInputText
+          placeholder="Buscar producto"
+          size="large"
+          formControlName="search"
+        />
+      </span>
+      <button
+        type="text"
+        pButton
+        (click)="showSideBar = true"
+        icon="pi pi-search"
+        class="p-button-rounded p-button-text header__container__search__button"
+      ></button>
+      <p-sidebar [(visible)]="showSideBar" position="right">
+        <div class='header__container__search__sidebar'>
+          <span class="p-input-icon-left header__container__search__sidebar__control">
+            <i class="pi pi-search"></i>
+            <input
+              type="text"
+              pInputText
+              placeholder="Buscar producto"
+              size="large"
+              formControlName="search"
+            />
+          </span>
+          <app-filters></app-filters>
+        </div>
+      </p-sidebar>
+    </form>
+  </div>
+</header>

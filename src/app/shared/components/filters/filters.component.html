@@ -1,0 +1,43 @@
+<form [formGroup]="filtersForm" class="filter">
+  <button
+    *ngIf="showDeleteFilter()"
+    pButton
+    pRipple
+    type="button"
+    label="Eliminar filtros"
+    class="p-button-outlined p-button-rounded p-button-secondary"
+    (click)="deleteFilters()"
+  ></button>
+  <div class="filter__control">
+    <div class="filter__control__title">Precio</div>
+    <div>
+      {{
+        filtersForm.controls["priceRange"].value[0]
+          | currency : "$" : "symbol" : "1.0-0"
+      }}
+      -
+      {{
+        filtersForm.controls["priceRange"].value[1]
+          | currency : "$" : "symbol" : "1.0-0"
+      }}
+    </div>
+    <p-slider
+      formControlName="priceRange"
+      [range]="true"
+      [min]="0"
+      [max]="1000"
+      (onSlideEnd)="onPriceChange()"
+    ></p-slider>
+  </div>
+  <div class="filter__control">
+    <div class="filter__control__title">Categoría</div>
+    <p-chip
+      *ngFor="let category of categories"
+      [label]="category.name"
+      [styleClass]="
+        'category-chip' + (category.id === selectedCategory ? ' active' : '')
+      "
+      (click)="onCategoryChange(category.id)"
+    ></p-chip>
+  </div>
+</form>

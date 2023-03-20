@@ -1,0 +1,24 @@
+.filter {
+  padding: 20px;
+  &__control {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin-block: 10px;
+    &__title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .category-chip {
+    cursor: pointer;
+  }
+
+  .active {
+    background-color: var(--red-400);
+  }
+}

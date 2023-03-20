@@ -1,0 +1,45 @@
+<div class="container">
+  <h1 class="text-tittle">Lista de productos</h1>
+  <div class="products">
+    <div class="products__filters">
+      <app-filters></app-filters>
+    </div>
+    <div class="products__list">
+      <div class="products__list-grid">
+        <div class="products__list-grid__card" *ngFor="let product of products">
+          <div class="products__list-grid__card__image">
+            <img alt="Card" [src]="product.images[0]" />
+          </div>
+          <div class="products__list-grid__card__content">
+            <div>
+              <p class="text-subtittle">{{ product.title }}</p>
+              <p>{{ product.description }}</p>
+            </div>
+            <div class="products__list-grid__card__content__info">
+              <div class="price">
+                {{ product.price | currency : "$" : "symbol" : "1.0-0" }}
+              </div>
+              <button
+                pButton
+                pRipple
+                type="button"
+                label="Ver detalles"
+                [routerLink]="['/products/detail', product.id]"
+                class="p-button-outlined p-button-rounded p-button-secondary"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="products__list-paginator">
+        <p-paginator
+          [rows]="paginator.rows || 0"
+          [first]="paginator.first || 0"
+          [totalRecords]="paginator.totalRecords"
+          [rowsPerPageOptions]="paginator.rowsPerPageOptions"
+          (onPageChange)="paginate($event)"
+        ></p-paginator>
+      </div>
+    </div>
+  </div>
+</div>

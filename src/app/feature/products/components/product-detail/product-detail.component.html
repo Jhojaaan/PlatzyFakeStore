@@ -1,0 +1,39 @@
+<div class="container">
+  <h1 class="text-tittle">Detalle de producto</h1>
+  <div class="product-detail" *ngIf="product">
+    <div class="product-detail__gallery">
+      <p-galleria [value]="images" [showThumbnailNavigators]="false">
+        <ng-template pTemplate="item" let-item>
+          <img [src]="item.url" [alt]="item.alt" style="max-width: 400px" />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+          <div class="images-grid">
+            <img [src]="item.url" width="100px" />
+          </div>
+        </ng-template>
+      </p-galleria>
+    </div>
+    <div class="product-detail__info">
+      <div class="product-detail__info__principal">
+        <h1 class="text-tittle">
+          {{ product.title }}
+        </h1>
+        <div class="price">
+          {{ product.price | currency : "$" : "symbol" : "1.0-0" }}
+        </div>
+      </div>
+      <div class="product-detail__info__secondary">
+        <div>
+          {{ product.description }}
+        </div>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Añadir al carrito"
+          class="p-button-outlined p-button-rounded p-button-secondary"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>

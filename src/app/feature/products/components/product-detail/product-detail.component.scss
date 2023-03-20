@@ -1,0 +1,20 @@
+.product-detail {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > div {
+    flex: 1 1 400px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+:host ::ng-deep {
+  .p-galleria .p-galleria-thumbnail-container {
+    background-color: transparent;
+  }
+}
